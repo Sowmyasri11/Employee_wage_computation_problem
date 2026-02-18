@@ -3,13 +3,15 @@ import java.util.Random;
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    public static int wage_per_hour = 20;
-    public static int full_day_hours = 8;
+    public static final int WAGE_PER_HOUR  = 20;
+    public static final int FULL_DAY = 8;
+    public static final int PART_TIME = 4;
 
     public static void main(String[] args) {
         System.out.println("Welcome to Employee Wage Computation ! ");
         checkAttendance();
         calculateDailyWage();
+        calculatePartTimeWage();
     }
 
     public static void checkAttendance() {
@@ -25,9 +27,18 @@ public class Main {
     }
 
     public static void calculateDailyWage() {
-        int employee_Wage=wage_per_hour*full_day_hours;
-        System.out.println("Employee Wage is "+employee_Wage);
+        int employee_Wage = WAGE_PER_HOUR  * FULL_DAY;
+        System.out.println("Employee Wage is " + employee_Wage);
 
+    }
+
+    public static void calculatePartTimeWage() {
+        int empType = (int) (Math.random() * 2); // 0=part-time,1=full-time
+        int hours = empType == 1 ? FULL_DAY : PART_TIME;
+
+        int wage = hours * WAGE_PER_HOUR;
+        System.out.println("Employee worked hours: " + hours);
+        System.out.println("Wage: " + wage);
     }
 
 }

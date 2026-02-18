@@ -6,12 +6,14 @@ public class Main {
     public static final int WAGE_PER_HOUR  = 20;
     public static final int FULL_DAY = 8;
     public static final int PART_TIME = 4;
+    public static final int FULL_TIME = 1;
 
     public static void main(String[] args) {
         System.out.println("Welcome to Employee Wage Computation ! ");
         checkAttendance();
         calculateDailyWage();
         calculatePartTimeWage();
+        wageUsingSwitch();
     }
 
     public static void checkAttendance() {
@@ -38,6 +40,20 @@ public class Main {
 
         int wage = hours * WAGE_PER_HOUR;
         System.out.println("Employee worked hours: " + hours);
+        System.out.println("Wage: " + wage);
+    }
+    public static void wageUsingSwitch() {
+        int empCheck = (int)(Math.random() * 3); // 0,1,2
+        int hours = 0;
+
+        switch(empCheck) {
+            case FULL_TIME -> hours = 8;
+            case PART_TIME -> hours = 4;
+            default -> hours = 0;
+        }
+
+        int wage = hours * WAGE_PER_HOUR;
+        System.out.println("Employee Hours: " + hours);
         System.out.println("Wage: " + wage);
     }
 

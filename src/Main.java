@@ -8,6 +8,8 @@ public class Main {
     public static final int PART_TIME = 4;
     public static final int FULL_TIME = 1;
     public static final int WORKING_DAYS = 20;
+    public static final int MAX_HOURS = 100;
+    public static final int MAX_DAYS = 20;
 
     public static void main(String[] args) {
         System.out.println("Welcome to Employee Wage Computation ! ");
@@ -16,6 +18,7 @@ public class Main {
         calculatePartTimeWage();
         wageUsingSwitch();
         wageForMonth();
+        totalWageTillCondition();
     }
 
     public static void checkAttendance() {
@@ -32,7 +35,7 @@ public class Main {
 
     public static void calculateDailyWage() {
         int employee_Wage = WAGE_PER_HOUR * FULL_DAY;
-        System.out.println("Employee Wage is " + employee_Wage);
+        System.out.println("Employee Daily Wage is " + employee_Wage);
 
     }
 
@@ -56,8 +59,8 @@ public class Main {
         }
 
         int wage = hours * WAGE_PER_HOUR;
-        System.out.println("Employee Hours: " + hours);
-        System.out.println("Wage: " + wage);
+        System.out.println("Employee working Hours: " + hours);
+        System.out.println("Employee Wage: " + wage);
     }
 
     public static void wageForMonth() {
@@ -69,6 +72,26 @@ public class Main {
         }
 
         System.out.println("Total Wage for a Month: " + totalWage);
+    }
+    public static void totalWageTillCondition() {
+        int totalHours = 0, totalDays = 0, totalWage = 0;
+
+        while(totalHours < MAX_HOURS && totalDays < MAX_DAYS) {
+            totalDays++;
+            int empCheck = (int)(Math.random() * 3);
+            int hours = switch(empCheck) {
+                case FULL_TIME -> 8;
+                case PART_TIME -> 4;
+                default -> 0;
+            };
+
+            totalHours += hours;
+            totalWage += hours * WAGE_PER_HOUR;
+        }
+
+        System.out.println("Total Days: " + totalDays);
+        System.out.println("Total Hours: " + totalHours);
+        System.out.println("Total Wage: " + totalWage);
     }
 
 }
